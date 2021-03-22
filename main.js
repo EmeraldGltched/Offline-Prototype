@@ -6,6 +6,12 @@ var camera = new THREE.PerspectiveCamera(
   1000
 );
 
+var position = { 
+  x: 0, 
+  y: 2, 
+  z: 0 
+};
+
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -21,6 +27,7 @@ window.addEventListener('resize', function() {
 
 controls = new THREE.OrbitControls(camera, renderer.domElement);
 
+// Block config
 function createGrassBlock(x, y, z) {
   var grassBlockGeometry = new THREE.BoxGeometry(1, 1, 1);
   var grassBlockMaterials =
@@ -87,6 +94,51 @@ function createTurtle(x, y, z) {
   turtle.position.z = z;
 }
 
+function createCoalOre(x, y, z) {
+  var coalOreGeometry = new THREE.BoxGeometry(1, 1, 1);
+  var coalOreMaterials =
+      [
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/coal_ore/coal_ore.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/coal_ore/coal_ore.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/coal_ore/coal_ore.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/coal_ore/coal_ore.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/coal_ore/coal_ore.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/coal_ore/coal_ore.png'), side: THREE.DoubleSide})
+      ]
+
+  var coalOreMaterial = new THREE.MeshFaceMaterial(coalOreMaterials);
+  var coalOre = new THREE.Mesh(coalOreGeometry, coalOreMaterial);
+  
+  scene.add(coalOre);
+  
+  coalOre.position.x = x;
+  coalOre.position.y = y;
+  coalOre.position.z = z;
+}
+
+function createBedrock(x, y, z) {
+  var bedrockGeometry = new THREE.BoxGeometry(1, 1, 1);
+  var bedrockMaterials =
+      [
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/bedrock/bedrock.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/bedrock/bedrock.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/bedrock/bedrock.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/bedrock/bedrock.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/bedrock/bedrock.png'), side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('textures/bedrock/bedrock.png'), side: THREE.DoubleSide})
+      ]
+
+  var bedrockMaterial = new THREE.MeshFaceMaterial(bedrockMaterials);
+  var bedrock = new THREE.Mesh(bedrockGeometry, bedrockMaterial);
+  
+  scene.add(bedrock);
+  
+  bedrock.position.x = x;
+  bedrock.position.y = y;
+  bedrock.position.z = z;
+}
+
+// Block creation
 createGrassBlock(0, 0, 0); // Turtle
 createGrassBlock(1, 0, 0);
 createGrassBlock(0, 0, 1);
@@ -134,12 +186,109 @@ createDirt(-2, 0, -5);
 createDirt(-1, 0, -5);
 createDirt(-1, 1, -5);
 createDirt(-2, 1, -5);
+createDirt(0, -1, 0);
+createDirt(1, -1, 0);
+createDirt(-1, -1, 0);
+createDirt(0, -1, 1);
+createDirt(0, -1, -1);
+createDirt(1, -1, -1);
+createDirt(-1, -1, -1);
+createDirt(-1, -1, 1);
+createDirt(1, -1, 1);
+createDirt(-2, -1, 1);
+createDirt(-2, -1, 0);
+createDirt(-2, -1, -1);
+createDirt(-2, -1, -2);
+createDirt(-1, -1, -2);
+createDirt(0, -1, -2);
+createDirt(1, -1, -2);
+createDirt(2, -1, -2);
+createDirt(2, -1, -3);
+createDirt(2, -1, -4);
+createDirt(1, -1, -5);
+createDirt(1, -1, -4);
+createDirt(1, -1, -3);
+createDirt(0, -1, -3);
+createDirt(0, -1, -4);
+createDirt(0, -1, -5);
+createDirt(-1, -1, -5);
+createDirt(-1, -1, -4);
+createDirt(-1, -1, -3);
+createDirt(-2, -1, -5);
+createDirt(-2, -1, -4);
+createDirt(-2, -1, -3);
+createDirt(0, -2, 0);
+createDirt(1, -2, 0);
+createDirt(-1, -2, 0);
+createDirt(0, -2, 1);
+createDirt(0, -2, -1);
+createDirt(1, -2, -1);
+createDirt(-1, -2, -1);
+createDirt(-1, -2, 1);
+createDirt(1, -2, 1);
+createDirt(-2, -2, 1);
+createDirt(-2, -2, 0);
+createDirt(-2, -2, -1);
+createDirt(-2, -2, -2);
+createDirt(-1, -2, -2);
+createDirt(0, -2, -2);
+createDirt(1, -2, -2);
+createDirt(2, -2, -2);
+createDirt(2, -2, -3);
+createDirt(2, -2, -4);
+createDirt(1, -2, -5);
+createDirt(1, -2, -4);
+createDirt(1, -2, -3);
+createDirt(0, -2, -3);
+createDirt(0, -2, -4);
+createDirt(0, -2, -5);
+createDirt(-1, -2, -5);
+createDirt(-1, -2, -4);
+createDirt(-1, -2, -3);
+createDirt(-2, -2, -5);
+createDirt(-2, -2, -4);
+createDirt(-2, -2, -3);
+
+createBedrock(0, -3, 0);
+createBedrock(1, -3, 0);
+createBedrock(-1, -3, 0);
+createBedrock(0, -3, 1);
+createBedrock(0, -3, -1);
+createBedrock(1, -3, -1);
+createBedrock(-1, -3, -1);
+createBedrock(-1, -3, 1);
+createBedrock(1, -3, 1);
+createBedrock(-2, -3, 1);
+createBedrock(-2, -3, 0);
+createBedrock(-2, -3, -1);
+createBedrock(-2, -3, -2);
+createBedrock(-1, -3, -2);
+createBedrock(0, -3, -2);
+createBedrock(1, -3, -2);
+createBedrock(2, -3, -2);
+createBedrock(2, -3, -3);
+createBedrock(2, -3, -4);
+createBedrock(1, -3, -5);
+createBedrock(1, -3, -4);
+createBedrock(1, -3, -3);
+createBedrock(0, -3, -3);
+createBedrock(0, -3, -4);
+createBedrock(0, -3, -5);
+createBedrock(-1, -3, -5);
+createBedrock(-1, -3, -4);
+createBedrock(-1, -3, -3);
+createBedrock(-2, -3, -5);
+createBedrock(-2, -3, -4);
+createBedrock(-2, -3, -3);
 
 createTurtle(0, 1, 0);
 createTurtle(1, 2, -4);
 
+// Scene updates
 camera.position.y = 3;
 camera.position.z = 7;
+
+camera.target = new THREE.Vector3(position);
 
 var update = function() {
   //cube.rotation.y += 0.005;
